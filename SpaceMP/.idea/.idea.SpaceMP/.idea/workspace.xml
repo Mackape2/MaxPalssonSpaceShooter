@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af416a2-77bb-4e83-a9bd-a18043c3151e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Asteroids.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Asteroids.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceRandomGen.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceRandomGen.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shader Graphs_test.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shader Graphs_test.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/test.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/test.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +78,10 @@
       <workItem from="1697821147487" duration="48000" />
       <workItem from="1698066904049" duration="582000" />
       <workItem from="1698067517311" duration="99000" />
-      <workItem from="1698069635796" duration="5560000" />
+      <workItem from="1698069635796" duration="5790000" />
+      <workItem from="1698077099954" duration="214000" />
+      <workItem from="1698179641918" duration="10853000" />
+      <workItem from="1698662663852" duration="4938000" />
     </task>
     <servers />
   </component>
