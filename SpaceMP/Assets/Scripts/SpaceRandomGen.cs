@@ -3,9 +3,10 @@ using Unity.Mathematics;
 
 namespace AsteroidsNamespace
 {
+    [UpdateInGroup(typeof(InitializationSystemGroup))]
     public struct SpaceRandomGen : IComponentData
     {
-        public Random Value;
+        public Random RandomGenValue;
         
     }
 }

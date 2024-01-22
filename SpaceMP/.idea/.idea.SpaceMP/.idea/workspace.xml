@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af416a2-77bb-4e83-a9bd-a18043c3151e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Asteroid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Asteroid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SceneDependencyCache/568cd5b6cc77149b81c4ac3a3e9bbbf8.sceneWithBuildSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SceneDependencyCache/568cd5b6cc77149b81c4ac3a3e9bbbf8.sceneWithBuildSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Asteroids.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Asteroids.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceAspect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceRandomGen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceRandomGen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawning system.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AstroidSpawnSystem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,7 +91,23 @@
       <workItem from="1698069635796" duration="5790000" />
       <workItem from="1698077099954" duration="214000" />
       <workItem from="1698179641918" duration="10853000" />
-      <workItem from="1698662663852" duration="4938000" />
+      <workItem from="1698662663852" duration="22884000" />
+      <workItem from="1701680227302" duration="26976000" />
+      <workItem from="1702315263059" duration="6309000" />
+      <workItem from="1702896738059" duration="8324000" />
+      <workItem from="1702989711318" duration="10636000" />
+      <workItem from="1703160202364" duration="6242000" />
+      <workItem from="1703246497513" duration="5407000" />
+      <workItem from="1703516380691" duration="4012000" />
+      <workItem from="1703687263605" duration="7699000" />
+      <workItem from="1703776665292" duration="8605000" />
+      <workItem from="1703938781859" duration="3669000" />
+      <workItem from="1704461137441" duration="9101000" />
+      <workItem from="1704727261615" duration="2935000" />
+      <workItem from="1704987710361" duration="5551000" />
+      <workItem from="1705066870954" duration="9713000" />
+      <workItem from="1705498534342" duration="6000000" />
+      <workItem from="1705568422882" duration="17469000" />
     </task>
     <servers />
   </component>
@@ -104,5 +130,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/SpaceBehaviour.cs</url>
+          <line>24</line>
+          <properties documentPath="C:\Users\max.palsson\OneDrive - Change Maker Education\Documents\GitHub\GoldBeer\MaxPalssonSpaceShooter\SpaceMP\Assets\Scripts\SpaceBehaviour.cs" initialLine="20" containingFunctionPresentation="method 'Bake'">
+            <startOffsets>
+              <option value="657" />
+            </startOffsets>
+            <endOffsets>
+              <option value="658" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

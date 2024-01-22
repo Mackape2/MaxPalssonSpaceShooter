@@ -1,9 +1,12 @@
-﻿using Unity.Entities;
+﻿using Unity.Collections;
+using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace AsteroidsNamespace
 {
+    
     public readonly partial struct SpaceAspect : IAspect
     {
         public readonly Entity Entity;
@@ -13,30 +16,45 @@ namespace AsteroidsNamespace
         private readonly RefRO<Asteroids> _asteroids;
         private readonly RefRW<SpaceRandomGen> _spaceRandomGen;
         private readonly RefRW<LocalTransform> _transform;
+        
+        private readonly RefRW<AsteroidSpawnTimer> _spawntimer;
         private LocalTransform Transform => _transform.ValueRW;
+        
+       
 
-        public int NumberAsteroidsToSpawn => _asteroids.ValueRO.NumberOfSpawnpoints;
-        public Entity AsteroidPrefab => _asteroids.ValueRO.SpawnpointPrefab;
+       
+        
+        public struct SpawnPointsArray : IComponentData
+        {
+            public BlobAssetReference<SpawnPointsArrayBlob> Value;
+        }
+        
+        public struct SpawnPointsArrayBlob
+        {
+            public BlobArray<float3> Value;
+        }
 
-
-        private float3 GetRandomPosition()
+        public float3 GetRandomPosition()
         {
             float3 randomPosition;
-            do
-            {
-                randomPosition = _spaceRandomGen.ValueRW.Value.NextFloat3(MinCorner,MaxCorner);
-                
-            } while (math.distancesq(Transform.Position, randomPosition) <= SpawnFreeArea);
-
-
+            randomPosition = _spaceRandomGen.ValueRW.RandomGenValue.NextFloat3(MinCorner,MaxCorner);
             return randomPosition;
             
         }
+
+         public float SpawnTimerFloat
+         {
+             get => _spawntimer.ValueRO.TimeValue;
+             set => _spawntimer.ValueRW.TimeValue = value;
+         }
+
+        public bool TimeToSpawnAsteroid => SpawnTimerFloat <= 0f;
+        public float AstroidSpawnRate => _asteroids.ValueRO.AsteroidSpawnRate;
+        public Entity AsteroidPrefab => _asteroids.ValueRO.AsteroidPrefab;
+
         private float3 MinCorner => Transform.Position - (_asteroids.ValueRO.FieldDimensions.x * (float)0.5);
         private float3 MaxCorner => Transform.Position + (_asteroids.ValueRO.FieldDimensions.y * (float)0.5);
         public float3 Position => Transform.Position;
-
-        private const float SpawnFreeArea = 100;
 
     }
 }

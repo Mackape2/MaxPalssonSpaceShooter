@@ -168,11 +168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FieldDimensions:
-    x: 50
-    y: 50
-  NumberOfSpawnpoints: 60
-  SpawnpointPrefab: {fileID: 1130972230579451644, guid: afca3c1db66b0fa4eba725343f7939bb, type: 3}
+    x: 15
+    y: 5
   RandomSeed: 100
+  AstroidPrefab: {fileID: 1130972230579451644, guid: afca3c1db66b0fa4eba725343f7939bb, type: 3}
+  AstroidSpawnRate: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
