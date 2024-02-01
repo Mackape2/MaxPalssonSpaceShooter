@@ -51,10 +51,17 @@ namespace AsteroidsNamespace
         public bool TimeToSpawnAsteroid => SpawnTimerFloat <= 0f;
         public float AstroidSpawnRate => _asteroids.ValueRO.AsteroidSpawnRate;
         public Entity AsteroidPrefab => _asteroids.ValueRO.AsteroidPrefab;
+        
+        
 
-        private float3 MinCorner => Transform.Position - (_asteroids.ValueRO.FieldDimensions.x * (float)0.5);
-        private float3 MaxCorner => Transform.Position + (_asteroids.ValueRO.FieldDimensions.y * (float)0.5);
-        public float3 Position => Transform.Position;
+        public float3 HalfPosition => new()
+        {
+            x = _asteroids.ValueRO.FieldDimensions.x * 0.5f,
+            y = _asteroids.ValueRO.FieldDimensions.y * 0.5f,
+            z = 0f
+        };
+        public float3 MinCorner => Transform.Position - HalfPosition;
+        public float3 MaxCorner => Transform.Position + HalfPosition;
 
     }
 }

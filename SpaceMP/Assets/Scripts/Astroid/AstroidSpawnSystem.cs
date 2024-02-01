@@ -42,22 +42,25 @@ namespace AsteroidsNamespace
     
     [BurstCompile]
     public partial struct SpawnAstroidJob : IJobEntity 
-      {
+    {
           public float Deltatime;
           public EntityCommandBuffer ECB;
-          private void Execute(SpaceAspect spaceAspect)
+          private void Execute(SpaceAspect spaceAspect) 
           {
               spaceAspect.SpawnTimerFloat -= Deltatime;
-
+              
               if(!spaceAspect.TimeToSpawnAsteroid)return;
               spaceAspect.SpawnTimerFloat = spaceAspect.AstroidSpawnRate;
-              
 
               var newAsteroid = ECB.Instantiate(spaceAspect.AsteroidPrefab);
               float3 randomPosition = spaceAspect.GetRandomPosition();
               randomPosition.z = 0;
-              ECB.SetComponent(newAsteroid, new LocalTransform{Position = randomPosition, Scale = 1, Rotation = Quaternion.identity});
+              ECB.SetComponent(newAsteroid, 
+                  new LocalTransform
+                  {
+                      Position = randomPosition, Scale = 1,
+                      Rotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero)
+                  });
           }
-      }
-
+    }
 }

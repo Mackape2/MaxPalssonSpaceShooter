@@ -12,7 +12,7 @@ namespace AsteroidsNamespace
         public uint RandomSeed;
         public GameObject AstroidPrefab;
         public float AstroidSpawnRate;
-
+        
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireCube(transform.position, new Vector3(FieldDimensions.x,FieldDimensions.y,0));
