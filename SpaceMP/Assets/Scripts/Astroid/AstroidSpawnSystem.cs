@@ -34,8 +34,10 @@ namespace AsteroidsNamespace
                 Deltatime = timeDeltaTime,
                 ECB = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged)
             }.Run();
-           
-              
+            if(Input.GetKey(KeyCode.Space))
+            {
+                //Debug.Log("Space");
+            }
         }
         
     } 
@@ -54,13 +56,19 @@ namespace AsteroidsNamespace
 
               var newAsteroid = ECB.Instantiate(spaceAspect.AsteroidPrefab);
               float3 randomPosition = spaceAspect.GetRandomPosition();
+              Quaternion randomRotation = spaceAspect.GetRandomRotation();
               randomPosition.z = 0;
               ECB.SetComponent(newAsteroid, 
                   new LocalTransform
                   {
                       Position = randomPosition, Scale = 1,
-                      Rotation = Quaternion.LookRotation(Vector3.forward, Vector3.zero)
+                      Rotation = randomRotation
                   });
           }
+    }
+
+    public partial struct SpawnAstroidJo : IJobEntity
+    {
+        
     }
 }

@@ -42,6 +42,11 @@ namespace AsteroidsNamespace
             
         }
 
+        public quaternion GetRandomRotation()
+        {
+            return quaternion.RotateZ(_spaceRandomGen.ValueRW.RandomGenValue.NextFloat(360));
+        }
+
          public float SpawnTimerFloat
          {
              get => _spawntimer.ValueRO.TimeValue;
