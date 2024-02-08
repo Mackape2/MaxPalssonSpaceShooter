@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="6af416a2-77bb-4e83-a9bd-a18043c3151e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SpaceMP/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Asteroid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Asteroid.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Triangle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Triangle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidMovementAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidMovementAspect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/SpaceEntitiesScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Astroid/Asteroids.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Astroid/Asteroids.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidSpawnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidSpawnSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Astroid/AstroidSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playspace/SpaceAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playspace/SpaceAspect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playspace/SpaceBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playspace/SpaceBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ship/ShipControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ship/ShipControll.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,7 @@
       <workItem from="1705938094485" duration="611000" />
       <workItem from="1706539374870" duration="12442000" />
       <workItem from="1706560067810" duration="2251000" />
-      <workItem from="1706619707357" duration="51162000" />
+      <workItem from="1706619707357" duration="66712000" />
     </task>
     <servers />
   </component>

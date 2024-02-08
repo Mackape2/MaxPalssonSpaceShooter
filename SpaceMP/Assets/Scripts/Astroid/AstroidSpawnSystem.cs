@@ -34,10 +34,8 @@ namespace AsteroidsNamespace
                 Deltatime = timeDeltaTime,
                 ECB = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged)
             }.Run();
-            if(Input.GetKey(KeyCode.Space))
-            {
-                //Debug.Log("Space");
-            }
+            
+            
         }
         
     } 
@@ -65,10 +63,5 @@ namespace AsteroidsNamespace
                       Rotation = randomRotation
                   });
           }
-    }
-
-    public partial struct SpawnAstroidJo : IJobEntity
-    {
-        
     }
 }

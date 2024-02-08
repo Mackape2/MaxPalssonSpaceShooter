@@ -1,32 +1,75 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Burst;
+using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
-public class ShipControll : MonoBehaviour
+namespace AsteroidsNamespace
 {
-    // Start is called before the first frame update
-    [SerializeField] private float _speed;
-    [SerializeField] private float _twist;
-
-    // Update is called once per frame
-    private void Awake()
+    
+    [UpdateInGroup(typeof(InitializationSystemGroup))]
+    public partial struct ShipControlls : ISystem
     {
-        _speed *= 0.01f;
-        _twist *= 0.1f;
-    }
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.W))
+        [BurstCompile]
+        public void OnCreate(ref SystemState state)
         {
-            
-            transform.position += transform.up * _speed;
+            state.RequireForUpdate<Asteroids>();
+                
         }
-        if(Input.GetKey(KeyCode.A))
-            transform.rotation *=  Quaternion.AngleAxis(_twist, Vector3.forward);
-        if(Input.GetKey(KeyCode.D))
-            transform.rotation *=  Quaternion.AngleAxis(-_twist, Vector3.forward);
+            
+        [BurstCompile]
+        public void OnDestroy(ref SystemState state)
+        {
+                 
+        }
+            
+        [BurstCompile]
+        public void OnUpdate(ref SystemState state)
+        {
+                
+            var timeDeltaTime = SystemAPI.Time.DeltaTime;
+            Entity spaceShip = Entity.Null;
+            var ecbSingleton = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>();
+            state.CompleteDependency();
+            new ShipMovement()
+            {
+                SpaceShip = spaceShip,
+                ECB = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged)    
+            }.Run();
+                
+                
+        }
+            
+    }
+    public partial struct ShipMovement : IJobEntity
+    {
+        public Entity SpaceShip;
+        public EntityCommandBuffer ECB;
+        private void Execute(SpaceAspect spaceAspect)
+        {
+            float _speed = 2;
+            float _twist = 2;
+            if (SpaceShip == Entity.Null)
+                SpaceShip = ECB.Instantiate(spaceAspect.SpaceShipPrefab);
+            if (Input.GetKey(KeyCode.W))
+            {
+                
+                SpaceShip.transform.position += tranform.up * _speed;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.rotation *=  Quaternion.AngleAxis(_twist, Vector3.forward);
+            }
+            if (Input.GetKey(KeyCode.D))
+            { 
+                //transform.rotation *=  Quaternion.AngleAxis(-_twist, Vector3.forward);
+                
+            }
+            
+        }
     }
 }
+
+
+

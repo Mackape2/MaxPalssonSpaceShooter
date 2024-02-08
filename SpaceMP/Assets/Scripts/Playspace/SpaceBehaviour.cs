@@ -12,6 +12,7 @@ namespace AsteroidsNamespace
         public uint RandomSeed;
         public GameObject AstroidPrefab;
         public float AstroidSpawnRate;
+        public Entity SpaceShipPrefab;
         
         private void OnDrawGizmos()
         {
@@ -29,7 +30,8 @@ namespace AsteroidsNamespace
                 
                 FieldDimensions = authoring.FieldDimensions,
                 AsteroidPrefab = GetEntity(authoring.AstroidPrefab),
-                AsteroidSpawnRate = authoring.AstroidSpawnRate
+                AsteroidSpawnRate = authoring.AstroidSpawnRate,
+                SpaceShipPrefab = authoring.SpaceShipPrefab
             });
             AddComponent<AsteroidSpawnTimer>();
             AddComponent(new SpaceRandomGen

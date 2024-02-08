@@ -1,6 +1,7 @@
 using AsteroidsNamespace;
 using Unity.Burst;
 using Unity.Entities;
+using UnityEngine;
 using Random = Unity.Mathematics.Random;
 
 public partial struct AstroidSystem : ISystem
@@ -26,6 +27,10 @@ public partial struct AstroidSystem : ISystem
         {
             DeltaTime = deltaTime
         }.Schedule();
+        if(Input.GetKey(KeyCode.Space))
+        {
+            //Debug.Log("Space");
+        }
     }
 }
 

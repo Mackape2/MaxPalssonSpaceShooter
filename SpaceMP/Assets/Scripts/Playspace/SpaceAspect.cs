@@ -56,6 +56,8 @@ namespace AsteroidsNamespace
         public bool TimeToSpawnAsteroid => SpawnTimerFloat <= 0f;
         public float AstroidSpawnRate => _asteroids.ValueRO.AsteroidSpawnRate;
         public Entity AsteroidPrefab => _asteroids.ValueRO.AsteroidPrefab;
+
+        public Entity SpaceShipPrefab => _asteroids.ValueRO.SpaceShipPrefab;
         
         
 

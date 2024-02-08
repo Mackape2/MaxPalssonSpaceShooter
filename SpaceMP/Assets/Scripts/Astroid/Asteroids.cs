@@ -9,6 +9,7 @@ namespace AsteroidsNamespace
         public float2 FieldDimensions;
         public Entity AsteroidPrefab;
         public float AsteroidSpawnRate;
+        public Entity SpaceShipPrefab;
     }
    
     public struct AsteroidSpawnTimer : IComponentData
