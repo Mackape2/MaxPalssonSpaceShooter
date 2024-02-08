@@ -17,8 +17,16 @@ public readonly partial struct AstroidMovementAspect : IAspect
 
     public void Move(float deltaTime)
     {
-        _transform.ValueRW.Position += _transform.ValueRO.Up() * _astroidSpeed.ValueRO.Value * deltaTime;
+        var kl1 = /*SystemAPI.GetComponent<Transform>(Entity).position*/ _transform.ValueRO.Position.x - Transform.Position.x;
+        var kl2 = _transform.ValueRO.Position.z - Transform.Position.z;
+        var kl3 = math.atan2(kl1, kl2) + math.PI;
+        _transform.ValueRW.Position += kl3 * _astroidSpeed.ValueRO.Value * deltaTime;
+        Debug.Log(kl3);
+    }
+    public void Spin()
+    {
+        //_transform.ValueRW.Rotation *= Quaternion.AngleAxis(0.2f, Vector3.forward);
+
         
     }
-   
 }

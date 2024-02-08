@@ -47,5 +47,7 @@ public partial struct SpawnAstroidJob : IJobEntity
         randomDirection = new Random(1);
         int spinDirection = randomDirection.NextInt(0, 1);
         astroidMovementAspect.Move(DeltaTime);
+        astroidMovementAspect.Spin();
+        
     }
 }
