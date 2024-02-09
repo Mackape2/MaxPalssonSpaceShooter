@@ -1,30 +1,38 @@
 using System;
 using System.Collections;
+using Unity.Entities;
 using System.Collections.Generic;
+using AsteroidsNamespace;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class ShipControll : MonoBehaviour
+namespace AsteroidsNamespace
 {
-    // Start is called before the first frame update
-    [SerializeField] private float _speed;
-    [SerializeField] private float _twist;
-
-    // Update is called once per frame
-
-    void Update()
+    public class ShipControll : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.W))
+        public GameObject BulletPrefab;
+
+        void Update()
+        {
+          
+        }
+    }
+
+        public class ShipBaker : Baker<ShipControll>
         {
             
-            transform.position += transform.up * (_speed * Time.deltaTime);
+            public override void Bake(ShipControll authoring)
+            {
+                //AddComponent<ShipPosition>();
+                AddComponent(new Bullet
+                {
+                    BulletPrefab = GetEntity(authoring.BulletPrefab)
+                });
+                
+            }
         }
-        if(Input.GetKey(KeyCode.A))
-            transform.rotation *=  Quaternion.AngleAxis(_twist, Vector3.forward);
-        if(Input.GetKey(KeyCode.D))
-            transform.rotation *=  Quaternion.AngleAxis(-_twist, Vector3.forward);
-    }
 }
+
 
 
 

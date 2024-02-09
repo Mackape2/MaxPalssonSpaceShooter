@@ -18,6 +18,7 @@ namespace AsteroidsNamespace
         private readonly RefRW<LocalTransform> _transform;
         
         private readonly RefRW<AsteroidSpawnTimer> _spawntimer;
+        
         private LocalTransform Transform => _transform.ValueRW;
         
        
@@ -41,6 +42,8 @@ namespace AsteroidsNamespace
             return randomPosition;
             
         }
+
+       
         
         public quaternion GetRandomRotation()
         {
@@ -53,13 +56,13 @@ namespace AsteroidsNamespace
              set => _spawntimer.ValueRW.TimeValue = value;
          }
 
+        
+
         public bool TimeToSpawnAsteroid => SpawnTimerFloat <= 0f;
         public float AstroidSpawnRate => _asteroids.ValueRO.AsteroidSpawnRate;
         public Entity AsteroidPrefab => _asteroids.ValueRO.AsteroidPrefab;
 
-        public Entity SpaceShipPrefab => _asteroids.ValueRO.SpaceShipPrefab;
-        
-        
+
 
         public float3 HalfPosition => new()
         {

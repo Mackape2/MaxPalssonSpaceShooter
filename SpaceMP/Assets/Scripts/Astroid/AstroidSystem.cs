@@ -27,10 +27,6 @@ public partial struct AstroidSystem : ISystem
         {
             DeltaTime = deltaTime
         }.Schedule();
-        if(Input.GetKey(KeyCode.Space))
-        {
-            //Debug.Log("Space");
-        }
     }
 }
 

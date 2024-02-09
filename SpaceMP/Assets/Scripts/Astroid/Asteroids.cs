@@ -1,5 +1,6 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 
 namespace AsteroidsNamespace
 {
@@ -9,11 +10,13 @@ namespace AsteroidsNamespace
         public float2 FieldDimensions;
         public Entity AsteroidPrefab;
         public float AsteroidSpawnRate;
-        public Entity SpaceShipPrefab;
     }
    
     public struct AsteroidSpawnTimer : IComponentData
     {
         public float TimeValue;
     }
+
+   
+   
 }

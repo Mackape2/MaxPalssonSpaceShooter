@@ -20,7 +20,7 @@ namespace AsteroidsNamespace
         public void OnDestroy(ref SystemState state)
         {
              
-        }
+        } 
         
         [BurstCompile]
         public void OnUpdate(ref SystemState state)

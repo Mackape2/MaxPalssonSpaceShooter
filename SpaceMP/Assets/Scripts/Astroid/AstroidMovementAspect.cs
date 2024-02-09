@@ -13,6 +13,7 @@ public readonly partial struct AstroidMovementAspect : IAspect
     
     private readonly RefRW<LocalTransform> _transform;
     private readonly RefRO<AstroidSpeed> _astroidSpeed;
+  
     private LocalTransform Transform => _transform.ValueRO;
 
     public void Move(float deltaTime)
