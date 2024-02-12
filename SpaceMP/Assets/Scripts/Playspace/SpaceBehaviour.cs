@@ -34,7 +34,6 @@ namespace AsteroidsNamespace
                 
             });
             AddComponent<AsteroidSpawnTimer>();
-            //AddComponent<BulletPosition>();
             AddComponent(new SpaceRandomGen
             {
                 RandomGenValue = new Random(authoring.RandomSeed)

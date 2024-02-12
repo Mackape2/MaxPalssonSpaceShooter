@@ -27,14 +27,20 @@ public partial struct ShipContollSystem : ISystem
             }
 
             if (Input.GetKey(KeyCode.A))
+            {
+                //float roatation = 2 * Time.deltaTime;
                 transform.Rotation *= Quaternion.AngleAxis(2, Vector3.forward);
+            }
 
             if (Input.GetKey(KeyCode.D))
+            {
+                
                 transform.Rotation *= Quaternion.AngleAxis(-2, Vector3.forward);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 
-                var bullet = ecb.Instantiate(SystemAPI.GetComponentRO<Bullet>(VARIABLE.Item2).ValueRO.BulletPrefab);
+                Entity bullet = ecb.Instantiate(SystemAPI.GetComponentRO<Bullet>(VARIABLE.Item2).ValueRO.BulletPrefab);
                 ecb.SetComponent(bullet, new LocalTransform
                 {
                     Position = transform.Position,

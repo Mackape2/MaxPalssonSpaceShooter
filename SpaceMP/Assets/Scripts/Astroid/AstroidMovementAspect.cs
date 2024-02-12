@@ -9,12 +9,8 @@ using UnityEngine;
 
 public readonly partial struct AstroidMovementAspect : IAspect
 {
-    public readonly Entity Entity;
-    
     private readonly RefRW<LocalTransform> _transform;
     private readonly RefRO<AstroidSpeed> _astroidSpeed;
-  
-    private LocalTransform Transform => _transform.ValueRO;
 
     public void Move(float deltaTime)
     {

@@ -2,7 +2,6 @@ using AsteroidsNamespace;
 using Unity.Burst;
 using Unity.Entities;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
 
 public partial struct AstroidSystem : ISystem
 {
@@ -10,7 +9,6 @@ public partial struct AstroidSystem : ISystem
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<Asteroids>();
-            
     }
         
     [BurstCompile]
@@ -23,26 +21,19 @@ public partial struct AstroidSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
         var deltaTime = SystemAPI.Time.DeltaTime;
-        new SpawnAstroidJob()
+        new MoveAstroidJob()
         {
             DeltaTime = deltaTime
         }.Schedule();
     }
 }
-
 [BurstCompile]
-public partial struct SpawnAstroidJob : IJobEntity
+public partial struct MoveAstroidJob : IJobEntity
 {
-
     public float DeltaTime;
     [BurstCompile]
     private void Execute(AstroidMovementAspect astroidMovementAspect)
     {
-        Random randomDirection;
-
-        randomDirection = new Random(1);
-        int spinDirection = randomDirection.NextInt(0, 1);
         astroidMovementAspect.Move(DeltaTime);
-        
     }
 }

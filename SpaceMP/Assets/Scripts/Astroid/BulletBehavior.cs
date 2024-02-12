@@ -3,22 +3,20 @@ using System.Collections;
 using Unity.Entities;
 using System.Collections.Generic;
 using AsteroidsNamespace;
-using Unity.Mathematics;
+using Unity.Transforms;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float BulletTransform;
+}
 
-    public class BulletBaker : Baker<BulletBehavior>
+public class BulletBaker : Baker<BulletBehavior>
     {
         public override void Bake(BulletBehavior authoring)
         {
-            AddComponent<BulletPosition>();
+            AddComponent(new BulletSpeed{ Speed = authoring.BulletTransform });
         }
     }
-}
+

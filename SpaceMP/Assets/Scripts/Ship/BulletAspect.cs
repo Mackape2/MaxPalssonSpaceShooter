@@ -9,10 +9,7 @@ namespace AsteroidsNamespace
     public readonly partial struct BulletAspect : IAspect
     {
         private readonly RefRW<LocalTransform> _transform;
-        private readonly RefRO<Bullet>_bullet;
-        private readonly RefRW<BulletPosition> _bulletPosition;
-
-        public Entity BulletPrefab => _bullet.ValueRO.BulletPrefab; 
+        private readonly RefRW<BulletSpeed> _bulletSpeed;
 
         public LocalTransform GetPosition()
         {
@@ -20,16 +17,11 @@ namespace AsteroidsNamespace
             return transform;
         }
 
-       
-        public LocalTransform BulletPoition
-        {
-            get => _bulletPosition.ValueRO.Position;
-            set => _bulletPosition.ValueRW.Position = value;
-        }
-
+        
         public void BulletMove(float deltatime)
         {
-            _transform.ValueRW.Position = _transform.ValueRO.Up() * 5 * deltatime;
+            Debug.Log("hi");
+            _transform.ValueRW.Position += _transform.ValueRO.Up() * _bulletSpeed.ValueRO.Speed * deltatime;
         }
     }
     
@@ -39,8 +31,8 @@ namespace AsteroidsNamespace
         public Entity BulletPrefab;
     }
     
-    public struct BulletPosition : IComponentData
+    public struct BulletSpeed : IComponentData
     {
-        public LocalTransform Position;
+        public float Speed;
     }
 }

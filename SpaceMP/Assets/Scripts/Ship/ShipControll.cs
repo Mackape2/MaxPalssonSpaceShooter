@@ -1,21 +1,13 @@
-using System;
-using System.Collections;
-using Unity.Entities;
-using System.Collections.Generic;
 using AsteroidsNamespace;
-using Unity.Mathematics;
+using Unity.Entities;
 using UnityEngine;
 
-namespace AsteroidsNamespace
+namespace Ship
 {
     public class ShipControll : MonoBehaviour
     {
         public GameObject BulletPrefab;
 
-        void Update()
-        {
-          
-        }
     }
 
         public class ShipBaker : Baker<ShipControll>
@@ -23,12 +15,10 @@ namespace AsteroidsNamespace
             
             public override void Bake(ShipControll authoring)
             {
-                //AddComponent<ShipPosition>();
                 AddComponent(new Bullet
                 {
                     BulletPrefab = GetEntity(authoring.BulletPrefab)
                 });
-                
             }
         }
 }
