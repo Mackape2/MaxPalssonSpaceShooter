@@ -9,14 +9,16 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-    public float BulletTransform;
+    public float BulletsSpeed;
+    public float BulletSurviveTime;
 }
 
 public class BulletBaker : Baker<BulletBehavior>
     {
         public override void Bake(BulletBehavior authoring)
         {
-            AddComponent(new BulletSpeed{ Speed = authoring.BulletTransform });
+            AddComponent(new BulletSpeed{ Speed = authoring.BulletsSpeed });
+            AddComponent(new BulletSurviveTimer{ TimeValue = authoring.BulletSurviveTime});
         }
     }
 

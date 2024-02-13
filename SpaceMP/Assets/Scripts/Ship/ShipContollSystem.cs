@@ -29,13 +29,13 @@ public partial struct ShipContollSystem : ISystem
             if (Input.GetKey(KeyCode.A))
             {
                 //float roatation = 2 * Time.deltaTime;
-                transform.Rotation *= Quaternion.AngleAxis(2, Vector3.forward);
+                transform.Rotation *= Quaternion.AngleAxis(1, Vector3.forward);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 
-                transform.Rotation *= Quaternion.AngleAxis(-2, Vector3.forward);
+                transform.Rotation *= Quaternion.AngleAxis(-1, Vector3.forward);
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
