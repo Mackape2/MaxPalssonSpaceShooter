@@ -4,6 +4,7 @@ using Unity.Transforms;
 
 namespace AsteroidsNamespace
 {
+    //Different components meant for the asteroids
     [UpdateInGroup(typeof(InitializationSystemGroup))]
     public struct Asteroids : IComponentData
     {
@@ -12,6 +13,7 @@ namespace AsteroidsNamespace
         public float AsteroidSpawnRate;
     }
    
+    //Timer for when asteroids shall spawn
     public struct AsteroidSpawnTimer : IComponentData
     {
         public float TimeValue;

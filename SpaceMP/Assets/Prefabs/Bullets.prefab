@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletsSpeed: 8
-  BulletSurviveTime: 3
+  BulletSurviveTime: 2

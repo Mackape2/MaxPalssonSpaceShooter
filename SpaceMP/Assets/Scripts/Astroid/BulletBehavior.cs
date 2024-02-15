@@ -13,6 +13,7 @@ public class BulletBehavior : MonoBehaviour
     public float BulletSurviveTime;
 }
 
+//Attaches important components to the bullets
 public class BulletBaker : Baker<BulletBehavior>
     {
         public override void Bake(BulletBehavior authoring)

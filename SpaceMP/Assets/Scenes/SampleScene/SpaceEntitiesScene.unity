@@ -229,7 +229,7 @@ MonoBehaviour:
     y: 10
   RandomSeed: 100
   AstroidPrefab: {fileID: 1130972230579451644, guid: afca3c1db66b0fa4eba725343f7939bb, type: 3}
-  AstroidSpawnRate: 1
+  AstroidSpawnRate: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

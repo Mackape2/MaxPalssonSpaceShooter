@@ -8,49 +8,89 @@ using UnityEngine;
 
 public partial struct ShipContollSystem : ISystem
 {
-    
+    //System responsible for player control and player inputs
 
     [BurstCompile]
-    // Update is called once per frame
     void OnUpdate(ref SystemState state)
     {
-        EntityCommandBuffer ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>()
+        float deltatime = Time.deltaTime;
+        
+        //Commandbuffer used for parallel-scheduling timers for bulletdeaths
+        EntityCommandBuffer.ParallelWriter ecbParallel = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>()
+            .CreateCommandBuffer(state.WorldUnmanaged).AsParallelWriter();
+        
+        //Regular Commandbuffer used when instanciating the bullets and controlling the ship
+        EntityCommandBuffer ecb2Regular = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>()
             .CreateCommandBuffer(state.WorldUnmanaged);
-
-        foreach (var VARIABLE in SystemAPI.Query<LocalTransform>().WithAll<Bullet>().WithEntityAccess())
+        
+        //Runs through all entities to give the playerships entity and localtransform.
+        //Always need to search for it to be able to update the localtransforms position
+        foreach (var VARIABLE in SystemAPI.Query<LocalTransform>().WithAll<BulletPrefabForShip>().WithEntityAccess())
         {
+            //Generates a variable with the ships transform
             LocalTransform transform = VARIABLE.Item1;
+            
+            //Forward controls
             if (Input.GetKey(KeyCode.W))
             {
-
-                transform.Position += transform.Up() * (7 * Time.deltaTime);
+                transform.Position += transform.Up() * (7 * deltatime);
             }
 
+            //Steer left
             if (Input.GetKey(KeyCode.A))
             {
-                //float roatation = 2 * Time.deltaTime;
-                transform.Rotation *= Quaternion.AngleAxis(1, Vector3.forward);
+                float rotation = 2 * deltatime * 100;
+                transform.Rotation *= Quaternion.AngleAxis(rotation, Vector3.forward);
             }
 
+            //Steer right
             if (Input.GetKey(KeyCode.D))
             {
-                
-                transform.Rotation *= Quaternion.AngleAxis(-1, Vector3.forward);
+                float rotation = 2 * deltatime * 100;
+                transform.Rotation *= Quaternion.AngleAxis(-rotation, Vector3.forward);
             }
+            
+            //Shoot controls
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //Instantiates the bullet
+                Entity bullet = ecb2Regular.Instantiate(SystemAPI.GetComponentRO<BulletPrefabForShip>(VARIABLE.Item2).ValueRO.BulletPrefab);
                 
-                Entity bullet = ecb.Instantiate(SystemAPI.GetComponentRO<Bullet>(VARIABLE.Item2).ValueRO.BulletPrefab);
-                ecb.SetComponent(bullet, new LocalTransform
+                //Sets it's position and rotation to that of the ship
+                ecb2Regular.SetComponent(bullet, new LocalTransform
                 {
                     Position = transform.Position,
                     Scale = 1,
                     Rotation = transform.Rotation
                 });
-
             }
+            
             transform.Scale = 1;
-            ecb.SetComponent(VARIABLE.Item2, transform);
+            
+            //Updates the ships own transform based on player input
+            ecb2Regular.SetComponent(VARIABLE.Item2, transform);
+            
+            //Decreases the timer on the bullets until they die.
+            //Placed the job here due to multiple bullets reducing
+            //the overall time until it was zero.
+            new BulletTimer()
+            {
+                Deltatime = deltatime,
+                ECB = ecbParallel
+                //Parallel scheduling to reduce impact on the game
+            }.ScheduleParallel();
+        }
+    }
+    
+    //The job that decrease the bullets' death timers
+    public partial struct BulletTimer : IJobEntity
+    {
+        public float Deltatime;
+        public EntityCommandBuffer.ParallelWriter ECB;
+    
+        private void Execute(BulletAspect bulletAspect, [EntityIndexInQuery]int sortKey)
+        {
+            bulletAspect.DecreaseBulletTimer(Deltatime, ECB, sortKey);
         }
     }
 }

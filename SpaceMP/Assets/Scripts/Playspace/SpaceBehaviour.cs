@@ -14,6 +14,7 @@ namespace AsteroidsNamespace
         
         public float AstroidSpawnRate;
         
+        //Shows the coordinate grid for developer
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireCube(transform.position, new Vector3(FieldDimensions.x,FieldDimensions.y,0));
@@ -22,6 +23,7 @@ namespace AsteroidsNamespace
     
     public class SpaceBaker : Baker<SpaceBehaviour>
     {
+        //Adds the components to the asteroids
         public override void Bake(SpaceBehaviour authoring)
         {
             

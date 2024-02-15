@@ -26,24 +26,24 @@ public partial struct ShipShooting : ISystem
     {
         var deltaTime = SystemAPI.Time.DeltaTime;
         var ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>();
-        Entity asd = Entity.Null;
-        LocalTransform fds = new LocalTransform();
+        
+        //Starts a job for each asteroid that checks if they've been hit by any bullet
         foreach (var VARIABLE in SystemAPI.Query<LocalTransform>().WithAll<AstroidSpeed>().WithEntityAccess())
         {
-            //Debug.Log(VARIABLE.Item2.ToString());
-            asd = VARIABLE.Item2;
-            fds = VARIABLE.Item1;
-        }
-        new BulletMovementJob()
+            new AsteroidHitJob()
         {
-            Deltatime = deltaTime,
-            HitEntity = asd,
-            HitLocation = fds,
+            //Asteroid enitity
+            HitEntity = VARIABLE.Item2,
+            
+            //Asteroid localtransform
+            HitLocation = VARIABLE.Item1,
             EntityCommandBuffer = ecb.CreateCommandBuffer(state.WorldUnmanaged)
         }.Schedule();
+        }
         
         state.CompleteDependency();
-        new ShootJob
+        //Job that handles movement of bullets
+        new BulletMovementJob
         {
             DeltaTime = deltaTime
         }.Schedule();
@@ -54,32 +54,37 @@ public partial struct ShipShooting : ISystem
 
 
     [BurstCompile]
-    public partial struct ShootJob : IJobEntity
+    public partial struct BulletMovementJob : IJobEntity
     {
         public float DeltaTime;
 
+        //Calls the script that moves the bullet forward
         private void Execute(BulletAspect bulletAspect)
         {
             bulletAspect.BulletMove(DeltaTime);
         }
     }
 
-    public partial struct BulletMovementJob : IJobEntity
+    public partial struct AsteroidHitJob : IJobEntity
     {
-        public float Deltatime;
+        
         public EntityCommandBuffer EntityCommandBuffer;
         public LocalTransform HitLocation;
         public Entity HitEntity;
         private void Execute(BulletAspect bulletAspect)
         {
-            
+            //The function measures the distance between the bullet and asteroids to determine
+            //if it's a hit or not.
+            float distance = bulletAspect.GetHitDistance(HitLocation);
+             if(distance <= 1)
+                 //Destroys the asteroid entity hit
+                 EntityCommandBuffer.DestroyEntity(HitEntity);
+             
+             //Destroys the bullet if it's timer has run out
              if (bulletAspect.BulletDeath)
              {
                  EntityCommandBuffer.DestroyEntity(bulletAspect.GetBullet());
              }
-            float distance = bulletAspect.GetHitDistance(HitLocation, Deltatime);
-             if(distance <= 1)
-                 EntityCommandBuffer.DestroyEntity(HitEntity);
              
         }
     }

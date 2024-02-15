@@ -9,6 +9,7 @@ public class AsteroidSpeedbehaviour : MonoBehaviour
 
 }
 
+//Attaches component responsible for the asteroids speed to the asteroid
 public class AstroidBaker : Baker<AsteroidSpeedbehaviour>
 {
     public override void Bake(AsteroidSpeedbehaviour authoring)
